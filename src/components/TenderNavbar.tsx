@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { SignInButton, SignUpButton, UserButton, useAuth } from '@clerk/clerk-react';
 
 export const TenderNavbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { isSignedIn } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,14 +36,29 @@ export const TenderNavbar: React.FC = () => {
         
         <nav className="flex items-center space-x-6">
           <div className="flex items-center space-x-4">
-            <Link to="/signin" className="text-sm font-medium text-gray-700 hover:text-tender-600 transition-colors">
-              Sign In
-            </Link>
-            <Link to="/signup">
-              <Button className="bg-tender-600 hover:bg-tender-700 text-white rounded-md px-5">
-                Sign Up
-              </Button>
-            </Link>
+            {isSignedIn ? (
+              <>
+                <Link to="/dashboard" className="text-sm font-medium text-gray-700 hover:text-tender-600 transition-colors">
+                  Dashboard
+                </Link>
+                <UserButton 
+                  afterSignOutUrl="/"
+                />
+              </>
+            ) : (
+              <>
+                <SignInButton mode="modal">
+                  <Button variant="link" className="text-sm font-medium text-gray-700 hover:text-tender-600 transition-colors">
+                    Sign In
+                  </Button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <Button className="bg-tender-600 hover:bg-tender-700 text-white rounded-md px-5">
+                    Sign Up
+                  </Button>
+                </SignUpButton>
+              </>
+            )}
           </div>
         </nav>
       </div>
