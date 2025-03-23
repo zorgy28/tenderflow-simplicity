@@ -11,9 +11,8 @@ import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 
-// Replace this with your actual Clerk publishable key
-// The user should provide their own key before using this code
-const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+// Use the provided Clerk publishable key
+const CLERK_PUBLISHABLE_KEY = 'pk_test_ZmluZS1yYXB0b3ItNDYuY2xlcmsuYWNjb3VudHMuZGV2JA';
 
 if (!CLERK_PUBLISHABLE_KEY) {
   console.error("Missing Clerk Publishable Key");
