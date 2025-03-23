@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 export const TenderNavbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,21 +23,25 @@ export const TenderNavbar: React.FC = () => {
     )}>
       <div className="max-w-5xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <img 
-            src="/lovable-uploads/ddf5b223-f267-4af6-bf72-2504517c68bd.png" 
-            alt="Taktik Logo" 
-            className="h-10" 
-          />
+          <Link to="/">
+            <img 
+              src="/lovable-uploads/ddf5b223-f267-4af6-bf72-2504517c68bd.png" 
+              alt="Taktik Logo" 
+              className="h-10" 
+            />
+          </Link>
         </div>
         
         <nav className="flex items-center space-x-6">
           <div className="flex items-center space-x-4">
-            <a href="#login" className="text-sm font-medium text-gray-700 hover:text-tender-600 transition-colors">
+            <Link to="/signin" className="text-sm font-medium text-gray-700 hover:text-tender-600 transition-colors">
               Sign In
-            </a>
-            <Button className="bg-tender-600 hover:bg-tender-700 text-white rounded-md px-5">
-              Sign Up
-            </Button>
+            </Link>
+            <Link to="/signup">
+              <Button className="bg-tender-600 hover:bg-tender-700 text-white rounded-md px-5">
+                Sign Up
+              </Button>
+            </Link>
           </div>
         </nav>
       </div>
